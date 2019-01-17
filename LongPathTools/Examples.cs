@@ -1,29 +1,56 @@
 ﻿using System;
 
+
 namespace LongPathTools
 {
     public static class Examples
     {
         static void Main(string[] args)
         {
+
+        //
+        // ──────────────────────────────────────────────────────── I ──────────
+        //  :::::: E X A M P L E S : :  :   :    :     :        :          :
+        // ──────────────────────────────────────────────────────────────────
+        //
+
+
+            //
+            // ─── PATH EXAMPLES ──────────────────────────────────────────────────────────────
+            //
+
+            // Path example for a local file/directory
+            // @"\\?\C:\Directory\DeeperDirectory\ExtremelyLongPath.PDF"
+            // @"\\?\C:\Directory\DeeperDirectory\"
+
+            // Path example for a file/directory on a shared network directory
+            // "\\?\UNC\share\Directory\DeeperDirectory\ExtremelyLongPath.pdf"
+            // "\\?\UNC\share\Directory\DeeperDirectory\"
+
+
+
+            //
+            // ─── USAGE EXAMPLES ─────────────────────────────────────────────────────────────
+            //
+        
             //File.Exists()
-            bool fileExists = LongPathHelpers.FileExists(@"\\?\UNC\fs-lrar-01\Programmers\Systems Assurance\VestcomProofingService\Proofs\ALBERTSONS CO. INC. SEATTLE\OriginalPDFs\abcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyz\ALBERTSONSCO-INC-SEATTLE-1026=040024=SEATTLE_27_MTN_20181029_20181025-AlbertsonsCoInc-SEATTLESTACKZSNAPISM12UP-760802-AUB11A-10260411244031[01586].pdf");
+            bool fileExists = LongPathHelpers.FileExists(@"\\?\C:\Directory\DeeperDirectory\ExtremelyLongPath\FileToCheckExistenceOf.pdf");
             Console.WriteLine($"File Exists: {fileExists}");
 
             //Directory.Exists()
-            bool directoryExists = LongPathHelpers.DirectoryExists(@"\\?\UNC\fs-lrar-01\Programmers\");
+            bool directoryExists = LongPathHelpers.DirectoryExists(@"\\?\UNC\share\Directory\DeeperDirectory\ExtremelyLongPath\");
             Console.WriteLine($"Directory Exists: {directoryExists}");
 
             //File.Copy()
-            bool fileCopy = LongPathHelpers.FileCopy(@"\\?\UNC\fs-lrar-01\Programmers\Systems Assurance\VestcomProofingService\Proofs\ALBERTSONS CO. INC. SEATTLE\OriginalPDFs\abcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyz\ALBERTSONSCO-INC-SEATTLE-1026=040024=SEATTLE_27_MTN_20181029_20181025-AlbertsonsCoInc-SEATTLESTACKZSNAPISM12UP-760802-AUB11A-10260411244031[01586].pdf", @"\\?\C:\test\test.PDF", false);
+            bool fileCopy = LongPathHelpers.FileCopy(@"\\?\UNC\share\OldDirectory\DeeperOldDirectory\ExtremelyLongPath\FileToCopy.pdf", @"\\?\C:\OldDirectory\DeeperNewDirectory\ExtremelyLongPath\CopiedFile.PDF", false);
             Console.WriteLine(fileCopy ? "File Copy: Success" : "File Copy: Fail");
 
             //File.Move()
-            bool fileMove = LongPathHelpers.FileMove(@"\\?\UNC\fs-lrar-01\Programmers\Systems Assurance\VestcomProofingService\Proofs\ALBERTSONS CO. INC. SEATTLE\OriginalPDFs\abcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyz\ALBERTSONSCO-INC-SEATTLE-1026=040024=SEATTLE_27_MTN_20181029_20181025-AlbertsonsCoInc-SEATTLESTACKZSNAPISM12UP-760802-AUB11A-10260411244031[01586].pdf", @"\\?\C:\test\test.PDF");
+            bool fileMove = LongPathHelpers.FileMove(@"\\?\C:\Directory\DeeperDirectory\ExtremelyLongPath\FileToMove.pdf", @"\\?\UNC\share\NewDirectory\DeeperNewDirectory\ExtremelyLongPath\MovedFile.pdf");
             Console.WriteLine(fileMove ? "File Move: Success" : "File Move: Fail");
 
             //File.Delete()
-            bool fileDelete = LongPathHelpers.FileDelete(@"\\?\UNC\fs-lrar-01\Programmers\Systems Assurance\VestcomProofingService\Proofs\ALBERTSONS CO. INC. SEATTLE\OriginalPDFs\abcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyzabcdefghjklmnoprstuvwxyz\ALBERTSONSCO-INC-SEATTLE-1026=040024=SEATTLE_27_MTN_20181029_20181025-AlbertsonsCoInc-SEATTLESTACKZSNAPISM12UP-760802-AUB11A-10260411244031[01586].pdf");
+            bool fileDelete = LongPathHelpers.FileDelete(@"\\?\C:\Directory\DeeperDirectory\ExtremelyLongPath\FileToDelete.pdf");
             Console.WriteLine(fileDelete ? "File Delete: Success" : "File Delete: Fail");
 
         }
