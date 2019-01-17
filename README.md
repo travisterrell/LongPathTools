@@ -1,5 +1,5 @@
 # LongPathTools
-C# .NET library used to provide long path equivalents for common System.IO file manipulation methods.
+###### C# library used to provide long path equivalents for common .NET Framework System.IO file manipulation methods.
 
 Although both Windows and .NET Framework *technically* support long paths (>260 characters), .NET Framework still does not currently have any file methods which actually work with them. This is a collection of replacement methods that PInvoke the WIN32 API to provide support for common operations (delete, copy, exists, etc.)
 
