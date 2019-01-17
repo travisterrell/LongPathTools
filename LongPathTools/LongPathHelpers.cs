@@ -6,8 +6,16 @@ namespace LongPathTools
 {
     public class LongPathHelpers
     {
-        #region Wrapper Classes
 
+    //
+    // ──────────────────────────────────────────────────────────────────── I ──────────
+    //  :::::: I M P L E M E N T A T I O N : :  :   :    :     :        :          :
+    // ──────────────────────────────────────────────────────────────────────────────
+    //
+
+        #region ─── WRAPPER METHODS ────────────────────────────────────────────────────────────
+
+        
         public static bool FileExists(string path)
         {
             uint attributes = GetFileAttributes(path.StartsWith(@"\\?\") ? path : @"\\?\" + path); //This will not convert network paths. Network paths must use \\?\UNC\RemoteMachine, rather than \\?\\\RemoteMachine
@@ -48,7 +56,8 @@ namespace LongPathTools
         #endregion
 
 
-        #region Private Methods
+        #region ─── PRIVATE METHODS ────────────────────────────────────────────────────────────
+
 
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern uint GetFileAttributes(string lpFileName);
